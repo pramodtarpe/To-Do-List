@@ -1,0 +1,9 @@
+.task-list-container {
+    width: 100%;
+}
+
+.no-task {
+    margin: auto;
+    color: white;
+    text-align: center;
+}
