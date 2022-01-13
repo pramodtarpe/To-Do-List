@@ -14,7 +14,7 @@ function App() {
   const selectedHandler = (taskTitle) => {
     for(let obj of toDoList){
       if(obj.taskTitle === taskTitle){
-        obj.isMarked ^= true;
+        obj.isMarked = !obj.isMarked;
       }
     }
     setToDoList(toDoList)
