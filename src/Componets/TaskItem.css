@@ -9,16 +9,27 @@
     transition: 0.2s;
 }
 .task-item-container-selected {
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(24, 179, 60) 0%, rgb(255, 255, 255) 100%);
-    color: black;
-    transition: 0.2s;
+    background: rgb(105, 189, 26);
+    background: linear-gradient(to right, rgb(24, 179, 60) 60%, rgb(255, 255, 255) 100%);
     border: 2px solid rgb(7, 90, 7);
     border-left: 10px solid rgb(7, 90, 7);
+    transition: 0.2s;
+}
+.task-item-container-done {
+    background-color: rgb(133, 130, 130);
+    border: 2px solid rgb(27, 27, 27);
+    color: white;
+    transition: 0.2s;
+}
+.task-item-container-done-selected {
+    background-color: rgb(133, 130, 130);
+    border-left: 10px solid rgb(27, 27, 27);
 }
 
 .task-item-checkbox {
-    width: 10%;
+    font-size: 0.7rem;
+    min-width: 40px;
+    width: 5%;
     color: rgb(0, 78, 0);
     display: flex;
     justify-content: center;
@@ -32,12 +43,13 @@
 
 .task-data-container {
     height: auto;
-    width: 90%;
+    width: 95%;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
 }
 
 .task-title {
+    width: 75%;
     margin: 0.5rem;
     font-size: 1.5rem;
     border: 0;
@@ -48,6 +60,7 @@
 }
 
 .task-btn-container {
+    width: 25%;
     margin: 0.5rem;
     display: flex;
     flex-flow: row nowrap;
@@ -65,17 +78,12 @@
     font-weight: bold;
 }
 
-.edit-task-title {
-    font-size: 1rem;
-}
 .task-item-days-left{
+    background-color: darkorchid;
+    border-radius: 10px;
+    padding: 0.4rem;
     font-size: 1rem;
-    margin: 0 0.5rem;
-    width: 10rem;
-    height: 2rem;
-    display: flex;
-    justify-content: right;
-    align-items: center;
+    margin: 0;
     font-weight: bold;
 }
 .task-item-btn::selection{

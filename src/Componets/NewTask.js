@@ -9,10 +9,10 @@ const NewTask = (props) => {
     const closeHandler = () => {
         props.onNewTask(false);
     }
-    
+
     return (
         <div>
-            <div className={classes.backdrop}></div>
+            <div className={classes.backdrop} onClick={props.onNewTask} ></div>
             <Card className={classes['task-form-container']}>
                 <TaskForm onClose={closeHandler} onSaveTaskForm={formHandler} toDoList={props.allTasks}/>
             </Card>

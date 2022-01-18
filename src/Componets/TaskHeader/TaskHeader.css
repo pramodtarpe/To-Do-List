@@ -1,3 +1,7 @@
+.task-header-card {
+    height: 10vh;
+}
+
 .header-container {
     width: 100%;
     height: 100%;
@@ -23,16 +27,22 @@
 }
 
 .header-button {
-    height: 4rem;
-    width: 8rem;
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: bold;
-    background: rgb(219, 67, 67);
+    height: auto;
+    width: auto;
+    padding: 0;
+    margin: 0 0.5rem;
     border: 0;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: 0.2s;
+    border: 0;
+    background: transparent;
+}
+.header-button{
+    font-size: 2rem;
 }
 .header-button:hover {
-    background: rgb(179, 51, 51);
+    color: rgb(0, 39, 0);
 }

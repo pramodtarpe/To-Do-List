@@ -30,7 +30,13 @@ const TaskForm = (props) => {
         const Difference_In_Time = (new Date(taskDate)).getTime() - (new Date(date2.toLocaleDateString()).getTime());
         const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
         const taskId = hashId(taskName);
-        const taskObj = {id:taskId, taskTitle: taskName, taskDaysLeft: parseInt(Difference_In_Days), isMarked:false};
+        // task object is created below for new item
+        const taskObj = {id:taskId,
+            taskTitle: taskName,
+            taskDaysLeft: parseInt(Difference_In_Days),
+            isMarked:false,
+            isDone:false
+        };
 
         for(let obj of props.toDoList){
             if(obj.id === taskId){
@@ -60,12 +66,12 @@ const TaskForm = (props) => {
                         <input id="taskname" type="text" value={taskName} onChange={taskNameChangeHandler}></input>
                     </div>
                     <div>
-                        <label forhtml="taskdate">Task date</label>
+                        <label forhtml="taskdate">Due date</label>
                         <input id="taskdate" type="date" min={taskDate} value={taskDate} onChange={taskDateChangeHandler}></input>
                     </div>
                 </div>
                 <div className='btn'>
-                    <button className='btn-tag' type="submit"><h1>Add task</h1></button>
+                    <button className='btn-tag' type="submit"><h1>Add</h1></button>
                 </div>
             </form>
         </div>

@@ -1,17 +1,13 @@
-.form-container {
-    width: 100%;
-}
-
 form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
-    align-content: space-between;
+    justify-content: space-between;
+    align-items: left;
 }
 
 .form-input__control {
-    padding-left: 1rem;
-    width: 70%;
+    margin: 1rem;
 }
 
 .form-container label {
@@ -33,19 +29,15 @@ form {
 }
 
 .btn {
-    width: 30%;
-    padding: 1rem;    
     box-sizing: border-box;
+    padding-left: 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
 }
 
 .btn-tag {
-    margin: 0;
-    padding: 0px;
-    width: 10rem;
-    height: 4rem;
+    margin: 1rem;
     background-color: limegreen;
     border: 1px solid green;
     border-radius: 12px;
@@ -53,8 +45,8 @@ form {
 }
 
 .btn-tag h1 {
-    margin: auto;
-    font-size: 2em;
+    margin: 10px;
+    font-size: 1.5rem;
     color: white;
     text-align: center;
 }
