@@ -1,23 +1,19 @@
+import { useContext } from 'react';
+import { AppContext } from '../../store/app-context';
 import Card from '../UI/Card';
 import './TaskHeader.css';
 
 const TaskHeader = (props) => {
+    const ctx = useContext(AppContext);
+
     const deleteHandler = () => {
-        const toDoList = props.allTasks.filter( e => e.isMarked === false );
-        props.onDeletedMarked(toDoList);
+        ctx.onDelete();
     }
     const newTaskHandler = () => {
-        props.onNewTask(true);
+        props.onOverlay(true);
     }
     const markAsDoneHandler = () => {
-        let toDoList = [...props.allTasks];
-        for(let obj of toDoList){
-            if(obj.isMarked === true){
-                obj.isDone = true;
-                obj.isMarked = false;
-            }
-        }
-        props.onMarkAsDone(toDoList);
+        ctx.onMarkedAsDone();
     }
 
     return (

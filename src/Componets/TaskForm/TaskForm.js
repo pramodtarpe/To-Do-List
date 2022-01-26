@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AppContext } from '../../store/app-context';
 
 import './TaskForm.css'
 
@@ -14,6 +15,8 @@ const hashId = (string) => {
 }
 
 const TaskForm = (props) => {
+    const ctx = useContext(AppContext);
+
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -22,10 +25,19 @@ const TaskForm = (props) => {
 
     const [taskName, setTaskName] = useState('');
     const [taskDate, setTaskDate] = useState(today);
+    const [isTitleValid, setIsTitleValid] = useState(false);
     
     const formHandler = (event) => {
         event.preventDefault();
-        if(taskName.trim().length === 0) return;
+        if(taskName.trim().length === 0){
+            setIsTitleValid(true);
+            setTaskName('Title is empty');
+            setTimeout(()=>{
+                setTaskName('')
+                setIsTitleValid(false);
+            },2000);
+            return;
+        }
         const date2 = new Date();
         const Difference_In_Time = (new Date(taskDate)).getTime() - (new Date(date2.toLocaleDateString()).getTime());
         const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
@@ -38,13 +50,18 @@ const TaskForm = (props) => {
             isDone:false
         };
 
-        for(let obj of props.toDoList){
+        for(let obj of ctx.toDoList){
             if(obj.id === taskId){
-                console.log('Task with same id already exits');
+                setIsTitleValid(true);
+                setTaskName('Task already exits');
+                setTimeout(()=>{
+                    setTaskName('')
+                    setIsTitleValid(false);
+                },2000);
                 return;
-            } 
+            }
         }
-        props.onSaveTaskForm(taskObj);
+        ctx.onNewTasK(taskObj);
         setTaskName('');
         setTaskDate(today);
         props.onClose(false);
@@ -63,7 +80,14 @@ const TaskForm = (props) => {
                 <div className='form-input__control'>
                     <div>
                         <label forhtml="taskname">Task name</label>
-                        <input id="taskname" type="text" value={taskName} onChange={taskNameChangeHandler}></input>
+                        <input 
+                            className={`${isTitleValid ? 'invalid-task-title':'' }`}
+                            id="taskname" 
+                            type="text" 
+                            value={taskName} 
+                            placeholder="Enter title here" 
+                            onChange={taskNameChangeHandler}>
+                        </input>
                     </div>
                     <div>
                         <label forhtml="taskdate">Due date</label>
@@ -71,7 +95,7 @@ const TaskForm = (props) => {
                     </div>
                 </div>
                 <div className='btn'>
-                    <button className='btn-tag' type="submit"><h1>Add</h1></button>
+                    <button className={`btn-tag ${isTitleValid ? 'btn-disabled':''}`} disabled={isTitleValid} type="submit"><h1>Add</h1></button>
                 </div>
             </form>
         </div>

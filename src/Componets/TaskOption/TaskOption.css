@@ -3,7 +3,6 @@
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    height: 10vh;
 }
 
 .task-filter-container, .task-sort-container {

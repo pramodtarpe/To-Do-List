@@ -7,6 +7,9 @@
     flex-flow: row nowrap;
     border: 2px solid white;
     transition: 0.2s;
+    animation-name: taskListHelp;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
 }
 .task-item-container-selected {
     background: rgb(105, 189, 26);
@@ -91,4 +94,9 @@
 }
 .task-item-days-left::selection{
     background: none;
+}
+
+@keyframes taskListHelp {
+    from {opacity: 0; background: transparent;}
+    to {opacity: 1;}
 }

@@ -26,6 +26,18 @@ form {
     border: 0;
     font-size: 1.2rem;
     padding: 10px;
+    transition: 0.2s;
+}
+.invalid-task-title {
+    font-size: 1rem;
+    text-align: center;
+    color: red;
+    pointer-events: none;
+    animation-name: invalid;
+    animation-duration: 1s;
+    animation-direction: alternate;
+    animation-iteration-count: 2;
+    animation-timing-function: linear;
 }
 
 .btn {
@@ -42,6 +54,9 @@ form {
     border: 1px solid green;
     border-radius: 12px;
     transition: 0.2s;
+}
+.btn-disabled {
+    background-color: #ccc;
 }
 
 .btn-tag h1 {
@@ -73,4 +88,9 @@ form {
     .btn-tag h1{
         font-size: 1rem;
     }
+}
+
+@keyframes invalid {
+    from {opacity: 0.75; border: 1px solid red;}
+    to   {opacity: 1; border: 1px solid red;}
 }

@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { AppContext } from '../store/app-context';
 import './TaskItem.css'
 
 const TaskItem = (props) => {
-    const [isSelected, setSelected] = useState(false);
+    const ctx = useContext(AppContext);
     const taskItemHandler = (event) => {
         event.stopPropagation();
-        setSelected(!isSelected);
-        props.onSelected(props.title);
+        ctx.onSelect(props.title);
     }
 
     let renderTaskItem = <p>{props.title} render task item</p>;
@@ -29,9 +29,9 @@ const TaskItem = (props) => {
     }
     else{
         renderTaskItem = (
-            <div className={`task-item-container ${isSelected &&  "task-item-container-selected"}`} onClick={taskItemHandler}>
+            <div className={`task-item-container ${props.isMarked &&  "task-item-container-selected"}`} onClick={taskItemHandler}>
             <div className='task-item-checkbox'>
-                <i className="fas fa-check-circle checkbox" style={isSelected ? {} : {visibility:'hidden'}} ></i>
+                <i className="fas fa-check-circle checkbox" style={props.isMarked ? {} : {visibility:'hidden'}} ></i>
             </div>
             <div className='task-data-container'>
                 <div className='task-title'>
