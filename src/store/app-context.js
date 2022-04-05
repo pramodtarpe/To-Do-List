@@ -3,12 +3,14 @@ import { sortFilterList } from '../Componets/TaskOption/TaskOption';
 
 export const AppContext = React.createContext();
 
-const todos = {
-    todos: [{taskTitle:"Learn React", taskDaysLeft:13, isMarked:false, isDone:false}],
-    filteredTodos: [{taskTitle:"Learn React", taskDaysLeft:13, isMarked:false, isDone:false}],
-    option: {}
+const initialState = {
+    todos: [],
+    filteredTodos: [],
+    option: {
+        fval: "all",
+        sval: "newest-first"
+    },
 }
-
 
 const reducer = (state, action) => {
     if(action.type === "ADD"){
@@ -50,14 +52,14 @@ const reducer = (state, action) => {
             return item;
         })
         let filteredTodos = sortFilterList(action.payload, state.todos);
-        return {todos:todos, filteredTodos: filteredTodos, option:action.payload};
+        console.log({...state.option, ...action.payload});
+        return {todos:todos, filteredTodos: filteredTodos, option:{...state.option, ...action.payload}};
     }
-
 }
 
 const AppProvider = ({children}) => {
-    const [state, dispatch] = useReducer(reducer,todos);
-
+    const [state, dispatch] = useReducer(reducer, initialState);
+    
     const newTaskHandler = (obj) => {
         dispatch({type : 'ADD', payload : obj});
     }
@@ -78,11 +80,12 @@ const AppProvider = ({children}) => {
         toDoList: state.todos,
         filteredTodos: state.filteredTodos,
         option : state.option,
+        displayInfo : state.displayInfo,
         onNewTasK: newTaskHandler,
         onSelect: selectTaskHandler,
         onDelete: deleteTaskHandler,
         onMarkedAsDone: markAsDoneHandler,
-        onTaskOption : taskOptionHandler
+        onTaskOption : taskOptionHandler,
     };
 
     return (

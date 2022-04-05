@@ -1,0 +1,46 @@
+.task-helper-container {
+    position: fixed;
+    padding: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    width: 250px;
+    color: rgba(0, 0, 0, 0.8);
+    background: rgb(0, 245, 122);
+    border-radius: 1rem;
+    z-index: 10;
+    animation: taskHelper 300ms linear forwards;
+}
+
+.task-helper-container h3 {
+    margin: 0;
+    padding-top: 10px;
+}
+.task-helper-text-selection::selection{
+    background: none;
+}
+
+.btn-close {
+    cursor: pointer;
+    margin: 0.5rem;
+    font-size: 1.2rem;
+    position: absolute;
+    z-index: 1000;
+    border-radius: 100%;
+    top:0;
+    right: 0;
+    transition: 0.2s;
+}
+
+.btn-close:hover {
+    color: #FF4646;
+    transform:scale(1.3);
+}
+
+@keyframes taskHelper {
+    from{
+        transform: translateX(5rem);
+    }
+    to{
+        transform: translateX(0rem);
+    }
+}

@@ -16,6 +16,9 @@
     width: 50%;
     padding-left: 1rem;
 }
+.header-title::selection{
+    background: none;
+}
 
 .header-button-container {
     width: 50%;
@@ -36,13 +39,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.2s;
     border: 0;
     background: transparent;
+    cursor: pointer;
 }
 .header-button{
     font-size: 2rem;
 }
-.header-button:hover {
+.header-button:hover > div{
     color: rgb(0, 39, 0);
+    transform: rotateY(180deg);
+    transition: all 0.3s;
 }

@@ -43,7 +43,8 @@ const TaskForm = (props) => {
         const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
         const taskId = hashId(taskName);
         // task object is created below for new item
-        const taskObj = {id:taskId,
+        const taskObj = {
+            id:taskId,
             taskTitle: taskName,
             taskDaysLeft: parseInt(Difference_In_Days),
             isMarked:false,
@@ -95,7 +96,7 @@ const TaskForm = (props) => {
                     </div>
                 </div>
                 <div className='btn'>
-                    <button className={`btn-tag ${isTitleValid ? 'btn-disabled':''}`} disabled={isTitleValid} type="submit"><h1>Add</h1></button>
+                    <button className={`btn-tag ${isTitleValid ? 'btn-disabled':'btn-tag-hover'}`} disabled={isTitleValid} type="submit"><h1>Add</h1></button>
                 </div>
             </form>
         </div>

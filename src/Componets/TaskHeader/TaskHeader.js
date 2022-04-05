@@ -15,6 +15,9 @@ const TaskHeader = (props) => {
     const markAsDoneHandler = () => {
         ctx.onMarkedAsDone();
     }
+    const infoHandler = () => {
+        props.onTaskHelper();
+    }
 
     return (
         <Card className="task-header-card">
@@ -22,13 +25,24 @@ const TaskHeader = (props) => {
                 <h1 className='header-title'>TO - DO LIST</h1>
                 <div className='header-button-container'>
                     <button className='header-button' type='button' onClick={newTaskHandler} >
-                        <i title="Add new task" className="fas fa-plus-circle"></i>
+                        <div>
+                            <i title="Add new task" className="fas fa-plus-circle"></i>
+                        </div>
                     </button>
                     <button className='header-button' type='button' onClick={deleteHandler} >
-                        <i title="Delete selected tasks" className="fas fa-minus-circle"></i>
+                        <div>
+                            <i title="Delete selected tasks" className="fas fa-minus-circle"></i>
+                        </div>
                     </button>
                     <button className='header-button' type='button' onClick={markAsDoneHandler} >
-                        <i title="Mark selected as done" className="far fa-calendar-check"></i>
+                        <div>
+                            <i title="Mark selected as done" className="far fa-calendar-check"></i>
+                        </div>
+                    </button>
+                    <button className='header-button' type='button' onClick={infoHandler}>
+                        <div>
+                            <i title="More info" className="fas fa-info-circle"></i>
+                        </div>
                     </button>
                 </div>
             </div>

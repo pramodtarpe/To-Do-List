@@ -1,3 +1,6 @@
+#task-filter, #task-sort {
+    cursor: pointer;
+}
 .task-option-card {
     display: flex;
     flex-flow: row nowrap;
